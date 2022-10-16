@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "command": "g++",
+    "type": "shell",
+    "reveal": "always",
+    "tasks": [
+        {
+            "label": "Build",
+            "args": [
+                "-g",
+                "-std=c++17",
+                "-I${workspaceFolder}/include",
+                "${workspaceFolder}/include/stb_image/*.cpp",
+                "${workspaceFolder}/src/\\Application.cpp",
+                "${workspaceFolder}/src/game/*.cpp",
+                //"${workspaceFolder}/src/impl/*.cpp", (Own API implementations)
+                "-lglfw",
+                "-lGLEW",
+                "-lGL",
+                "-o",
+                "${workspaceFolder}/OpenGL" 
+            ]
+        }
+    ] 
+}
