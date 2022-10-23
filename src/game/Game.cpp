@@ -1,7 +1,14 @@
+#include <GL/glew.h>
+
 #include "Game.h"
+#include "Triangle.h"
 
 Game::Game(uint32_t width, uint32_t height, const char* title)
     :height(height), width(width), title(title), keys(), gameWindow()
+{
+}
+
+void Game::ProcessInput(float dt)
 {
 
 }
@@ -20,11 +27,10 @@ void Game::Init()
     }
 
     glfwMakeContextCurrent(gameWindow);
-}
 
-void Game::ProcessInput(float dt)
-{
-
+    if(!glewInit()){
+        return;
+    }
 }
 
 void Game::Update(float dt)
@@ -35,18 +41,24 @@ void Game::Update(float dt)
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
+        glDrawArrays(GL_TRIANGLES, 0, 3);
         /* Swap front and back buffers */
         glfwSwapBuffers(gameWindow);
 
         /* Poll for and process events */
         glfwPollEvents();
     }
-
 }
 
 void Game::Render()
 {
+    Triangle triangle;
+}
+
+void Game::Run()
+{
     Init();
+    Render();
     Update(0.2f);
 }
 

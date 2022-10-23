@@ -3,7 +3,7 @@
 int main()
 {
     Game game(1280, 720, "Game");
-    game.Render();
+    game.Run();
 
     return 0;
 }

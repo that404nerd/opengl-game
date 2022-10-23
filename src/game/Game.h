@@ -26,7 +26,8 @@ public:
     Game(uint32_t width, uint32_t height, const char* title); // Define the width and height of the window
     ~Game();
 
-    void Render(); // Render the actual game
+    void Run(); // Run the actual game
+    void Render(); // Function that has the actual game code
     void Update(float dt); // To update the game every frame?
     void ProcessInput(float dt); // To Process Input
 

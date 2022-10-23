@@ -58,6 +58,8 @@
         "thread": "cpp",
         "cinttypes": "cpp",
         "typeinfo": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "cstring": "cpp",
+        "iomanip": "cpp"
     }
 }

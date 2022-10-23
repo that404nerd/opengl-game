@@ -13,7 +13,6 @@
                 "${workspaceFolder}/include/stb_image/*.cpp",
                 "${workspaceFolder}/src/\\Application.cpp",
                 "${workspaceFolder}/src/game/*.cpp",
-                //"${workspaceFolder}/src/impl/*.cpp", (Own API implementations)
                 "-lglfw",
                 "-lGLEW",
                 "-lGL",
