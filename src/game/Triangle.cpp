@@ -1,13 +1,14 @@
 #include <GL/glew.h>
-#include "Triangle.h"
 
 #include "VertexBuffer.h"
+#include "Triangle.h"
 
 Triangle::Triangle()
 {
     uint32_t vao;
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
+
 
     float positions[] = {
         -0.5f, -0.5f,
