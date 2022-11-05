@@ -1,11 +1,10 @@
 {
     "configurations": [
     {
-        "name": "C++ Launch",
+        "name": "Game Launch",
         "type": "cppdbg",
         "request": "launch",
-        "program": "${workspaceFolder}/OpenGL",
-        "preLaunchTask": "Build",
+        "program": "${workspaceFolder}/build/opengl-game",
         "args": [],
         "stopAtEntry": false,
         "cwd": "${fileDirname}",
@@ -19,7 +18,7 @@
                 "ignoreFailures": true
             },
             {
-                "description":  "Set Disassembly Flavor to Intel",
+                "description": "Set Disassembly Flavor to Intel",
                 "text": "-gdb-set disassembly-flavor intel",
                 "ignoreFailures": true
             }
