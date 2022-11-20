@@ -105,11 +105,6 @@ void Shader::Unbind() const
     glUseProgram(0);
 }
 
-void Shader::SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3)
-{
-    glUniform4f(GetUniformLocation(name), v0, v1, v2, v3);
-}
-
 unsigned int Shader::GetUniformLocation(const std::string& name)
 {
     if (m_UniformLocationCache.find(name) != m_UniformLocationCache.end())
@@ -121,4 +116,34 @@ unsigned int Shader::GetUniformLocation(const std::string& name)
     
     m_UniformLocationCache[name] = location;
     return location;
+}
+
+void Shader::SetFloat(const char *name, float value)
+{
+    glUniform1f(GetUniformLocation(name), value);
+}
+
+void Shader::SetInteger(const char *name, int value)
+{
+    glUniform1i(GetUniformLocation(name), value);
+}
+
+void Shader::SetVector2f(const char *name, float x, float y)
+{
+    glUniform2f(GetUniformLocation(name), x, y);
+}
+
+void Shader::SetVector3f(const char *name, glm::vec3 &vec3)
+{
+    glUniform3f(GetUniformLocation(name), vec3.x, vec3.y, vec3.z);
+}
+
+void Shader::SetVector4f(const char *name, const glm::vec4 &value)
+{
+    glUniform4f(GetUniformLocation(name), value.x, value.y, value.z, value.w);
+}
+
+void Shader::SetMatrix4(const char *name, const glm::mat4 &matrix)
+{
+    glUniformMatrix4fv(GetUniformLocation(name), 1, false, glm::value_ptr(matrix));
 }

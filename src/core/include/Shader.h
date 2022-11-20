@@ -2,6 +2,9 @@
 
 #include <string>
 #include <unordered_map>
+#include <cstdint>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 struct ShaderProgramSource
 {
@@ -24,9 +27,14 @@ public:
     uint32_t CompileShader(uint32_t type, const std::string& source);
     uint32_t CreateShader(const std::string& m_VertexShader, const std::string& m_FragmentShader);
 
-    void SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3);
-    uint32_t GetUniformLocation(const std::string& name);
+    void SetFloat(const char *name, float value);
+    void SetInteger(const char *name, int value);
+    void SetVector2f(const char *name, float x, float y);
+    void SetVector3f(const char *name, glm::vec3& vec3);
+    void SetVector4f(const char *name, const glm::vec4 &value);
+    void SetMatrix4(const char *name, const glm::mat4 &matrix);
 
+    uint32_t GetUniformLocation(const std::string& name);
 
     void Bind() const;
     void Unbind() const;

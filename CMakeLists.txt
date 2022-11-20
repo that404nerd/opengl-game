@@ -9,7 +9,9 @@ add_executable(opengl-game
   # Core Utils Implementation Includes
   src/core/impl/Buffer.cpp
   src/core/impl/Shader.cpp
-  src/core/impl/OpenGLDebug.cpp
+  src/core/impl/Texture.cpp
+  src/core/impl/SpriteRenderer.cpp
+  src/core/impl/ResourceManager.cpp
 
   # Actual Game Files
   src/game/Application.cpp

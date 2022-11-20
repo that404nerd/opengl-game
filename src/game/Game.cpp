@@ -1,38 +1,49 @@
 #include "Game.h"
-#include "../core/include/OpenGLDebug.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
-Game::Game()
-{
-}
+#include "../core/include/SpriteRenderer.h"
 
-void Game::Init()
-{
-    EnableGLDebugging();
+SpriteRenderer *spriteRenderer;
 
-    uint32_t vao;
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
+Game::Game(unsigned int width, unsigned int height) 
+    : m_State(GAME_ACTIVE), m_Keys(), m_Width(width), m_Height(height)
+{ 
 
-    float positions[] = {
-        -0.5f, -0.5f,
-        0.5f, -0.5f,
-        0.0f, 0.5f
-    };
-
-    uint32_t buf;
-    glGenBuffers(1, &buf);
-    glBindBuffer(GL_ARRAY_BUFFER, buf);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(positions), positions, GL_STATIC_DRAW);
-    
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8, 0);
-    glEnableVertexAttribArray(0);
-}
-
-void Game::Update(float dt)
-{
 }
 
 Game::~Game()
 {
+    
+}
 
+void Game::Init()
+{
+    glm::mat4 projection = glm::ortho(0.0f, 800.0f, 600.0f, 0.0f, -1.0f, 1.0f);  
+     // load shaders
+    ResourceManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
+    // configure shaders
+    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width), 
+        static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
+    ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
+    ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
+    // set render-specific controls
+    Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
+    // load textures
+    ResourceManager::LoadTexture("textures/awesomeface.png", true, "face");
+}
+
+void Game::Update(float dt)
+{
+    
+}
+
+void Game::ProcessInput(float dt)
+{
+   
+}
+
+void Game::Render()
+{
+   
 }
