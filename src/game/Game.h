@@ -22,9 +22,12 @@ public:
     GameState m_State;	
     bool m_Keys[1024];
     bool m_KeysProcessed[1024];
+private:
     uint32_t m_Width, m_Height;
     std::string m_Title;
+private:
     float m_Dt;
+    float lastFrame;
 public:
     Game(uint32_t width, uint32_t height, std::string title);
 

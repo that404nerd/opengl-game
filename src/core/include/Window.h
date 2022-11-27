@@ -14,9 +14,9 @@ struct WindowProps
     WindowProps(uint32_t windowWidth = 1280,
             uint32_t windowHeight = 720,
             const char* windowTitle = "Game")
-        : WindowWidth(windowWidth), WindowHeight(windowHeight), WindowTitle(windowTitle)
-    {
-    }
+        : WindowWidth(windowWidth), WindowHeight(windowHeight),
+          WindowTitle(windowTitle)
+    {};
 };
 
 class Window

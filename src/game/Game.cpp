@@ -42,6 +42,10 @@ void Game::Update(float dt)
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
+        float currentFrame = glfwGetTime();
+        dt = currentFrame - lastFrame;
+        lastFrame = currentFrame;
+
         Render();
 
         /* Swap front and back buffers */
@@ -49,8 +53,9 @@ void Game::Update(float dt)
 
         /* Poll for and process events */
         glfwPollEvents();
-    }
+        ProcessInput(dt);
 
+    }
 }
 
 void Game::ProcessInput(float dt)
