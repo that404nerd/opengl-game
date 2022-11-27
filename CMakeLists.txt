@@ -7,10 +7,10 @@ set(CMAKE_CXX_STANDARD 17)
 # The main executable
 add_executable(opengl-game
   # Core Utils Implementation Includes
+  src/core/impl/Window.cpp
   src/core/impl/Buffer.cpp
   src/core/impl/Shader.cpp
   src/core/impl/Texture.cpp
-  src/core/impl/SpriteRenderer.cpp
   src/core/impl/ResourceManager.cpp
 
   # Actual Game Files

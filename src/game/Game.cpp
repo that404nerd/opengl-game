@@ -1,49 +1,64 @@
+#include <GL/glew.h>
+
 #include "Game.h"
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
 
-#include "../core/include/SpriteRenderer.h"
+float positions[6] = {
+    -0.5, -0.5,
+    0.0, 0.5,
+    0.5, -0.5
+};
 
-SpriteRenderer *spriteRenderer;
+////////////////////////////// Actual Game Code //////////////////////////
 
-Game::Game(unsigned int width, unsigned int height) 
-    : m_State(GAME_ACTIVE), m_Keys(), m_Width(width), m_Height(height)
+static Window m_Window;
+
+Game::Game(uint32_t width, uint32_t height, std::string title) 
 { 
-
+    Init(width, height, title);
+    Update(GetDeltaTime());
 }
 
-Game::~Game()
+void Game::Init(uint32_t width, uint32_t height, std::string title)
 {
-    
-}
+    unsigned int buffer;
+    glGenBuffers(1, &buffer); 
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(positions), positions, GL_STATIC_DRAW);
 
-void Game::Init()
-{
-    glm::mat4 projection = glm::ortho(0.0f, 800.0f, 600.0f, 0.0f, -1.0f, 1.0f);  
-     // load shaders
-    ResourceManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
-    // configure shaders
-    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width), 
-        static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
-    ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
-    ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
-    // set render-specific controls
-    Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
-    // load textures
-    ResourceManager::LoadTexture("textures/awesomeface.png", true, "face");
-}
-
-void Game::Update(float dt)
-{
-    
-}
-
-void Game::ProcessInput(float dt)
-{
-   
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 8, (const void*)0);
+    glEnableVertexAttribArray(0);
 }
 
 void Game::Render()
 {
-   
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+}
+
+void Game::Update(float dt)
+{
+   this->m_Dt = dt;
+   while (!glfwWindowShouldClose(m_Window.GetWindowInstance()))
+    {
+        /* Render here */
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        Render();
+
+        /* Swap front and back buffers */
+        glfwSwapBuffers(m_Window.GetWindowInstance());
+
+        /* Poll for and process events */
+        glfwPollEvents();
+    }
+
+}
+
+void Game::ProcessInput(float dt)
+{
+   this->m_Dt = dt; 
+}
+
+Game::~Game()
+{
+    m_Window.DestroyWindow();    
 }
