@@ -2,7 +2,7 @@
 cmake_minimum_required (VERSION 3.14)
 project (opengl-game)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 23)
 
 # The main executable
 add_executable(opengl-game
@@ -12,6 +12,7 @@ add_executable(opengl-game
   src/core/impl/Shader.cpp
   src/core/impl/Texture.cpp
   src/core/impl/ResourceManager.cpp
+  src/game/Character.cpp
 
   # Actual Game Files
   src/game/Application.cpp

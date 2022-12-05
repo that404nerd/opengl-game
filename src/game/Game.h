@@ -8,6 +8,7 @@
 #include <iostream>
 
 #include "../core/include/Window.h"
+#include "Character.h"
 
 //////////////////// Actual Game ///////////////////////
 
@@ -25,7 +26,6 @@ public:
 private:
     uint32_t m_Width, m_Height;
     std::string m_Title;
-private:
     float m_Dt;
     float lastFrame;
 public:

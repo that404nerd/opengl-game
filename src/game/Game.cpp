@@ -1,16 +1,9 @@
-#include <GL/glew.h>
-
 #include "Game.h"
-
-float positions[6] = {
-    -0.5, -0.5,
-    0.0, 0.5,
-    0.5, -0.5
-};
 
 ////////////////////////////// Actual Game Code //////////////////////////
 
 static Window m_Window;
+static Character m_Character;
 
 Game::Game(uint32_t width, uint32_t height, std::string title) 
 { 
@@ -20,18 +13,12 @@ Game::Game(uint32_t width, uint32_t height, std::string title)
 
 void Game::Init(uint32_t width, uint32_t height, std::string title)
 {
-    unsigned int buffer;
-    glGenBuffers(1, &buffer); 
-    glBindBuffer(GL_ARRAY_BUFFER, buffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(positions), positions, GL_STATIC_DRAW);
-
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 8, (const void*)0);
-    glEnableVertexAttribArray(0);
+    m_Character.Init();
 }
 
 void Game::Render()
 {
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    m_Character.Render();
 }
 
 void Game::Update(float dt)
@@ -41,6 +28,7 @@ void Game::Update(float dt)
     {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
+        glClearColor(0.2f, 0.3f, 0.5f, 1.0f);
 
         float currentFrame = glfwGetTime();
         dt = currentFrame - lastFrame;
