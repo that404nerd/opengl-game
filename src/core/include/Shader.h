@@ -1,6 +1,16 @@
 #pragma once
 
-#include "../../gpch.h"
+#include <GL/glew.h>
+#include <string>
+#include <unordered_map>
+#include <cstdint>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <vector>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 class Shader
 {

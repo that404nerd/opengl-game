@@ -1,6 +1,14 @@
 #pragma once
 
-#include "../gpch.h"
+#include <GL/glew.h>
+
+#include <GLFW/glfw3.h>
+#include <cstdint>
+#include <string>
+#include <iostream>
+
+#include "../core/include/Window.h"
+#include "Character.h"
 
 //////////////////// Actual Game ///////////////////////
 

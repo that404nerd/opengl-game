@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../gpch.h"
+#include <GL/glew.h>
 
 class Texture2D
 {

@@ -50,6 +50,8 @@ void Window::MakeWindowContextCurrent()
     if (glewInit() != GLEW_OK)
         std::cout << "glewInit error!" << std::endl;
 
+    m_Log.Info("Started Game Successfully!");
+
 }
 
 void Window::DestroyWindow()

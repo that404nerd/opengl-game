@@ -1,17 +1,18 @@
 # Projects Settings
+
 cmake_minimum_required (VERSION 3.16)
-project (opengl-game)
+project (opengl-game LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
 
 # The main executable
+
 add_executable(opengl-game
   # Core Utils Implementation Includes
   src/core/impl/Window.cpp
   src/core/impl/Buffer.cpp
   src/core/impl/Shader.cpp
   src/core/impl/Texture.cpp
-  src/core/impl/Camera.cpp
   src/core/impl/Log.cpp
 
   # Event Stuff
@@ -26,25 +27,19 @@ add_executable(opengl-game
   lib/stb_image/stb_image.cpp
 )
 
-if (CMAKE_VERSION VERSION_GREATER_EQUAL 3.16)
-    message(STATUS "Compiling using pre-compiled header support")
-    target_precompile_headers(opengl-game
-      PUBLIC 
-      src/gpch.h)
-else()
-    message(STATUS "Disabled pre-compiled header support")
-endif()
+find_package(GLEW REQUIRED)
+find_package(glm REQUIRED)
 
 set_property(TARGET opengl-game PROPERTY CXX_STANDARD 23)
 target_compile_options(opengl-game PRIVATE -Wall)
 
 add_definitions(-DGLEW_STATIC)
-add_subdirectory(lib/glew EXCLUDE_FROM_ALL)
 add_subdirectory(lib/glm EXCLUDE_FROM_ALL)
 
 target_link_libraries(opengl-game
   PRIVATE glfw
-  PRIVATE libglew_static
+  PRIVATE GLEW
+  PRIVATE GL
   PRIVATE glm
 )
 

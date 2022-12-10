@@ -1,8 +1,5 @@
 #include "Character.h"
 
-static Shader m_Shader;
-static GameLog m_GameLog;
-
 Character::Character() {}
 
 void Character::Init()
@@ -49,7 +46,7 @@ void Character::MoveCharacter()
 {
     if(m_Event.GetKeyInput(GLFW_KEY_A))
     {
-        m_GameLog.Info("Pressed A");    
+        m_Log.Warn("Pressed Key A");
     }
 }
 

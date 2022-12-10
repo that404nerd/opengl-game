@@ -1,11 +1,11 @@
 #pragma once
 
 #include <GL/glew.h>
-
 #include <GLFW/glfw3.h>
 #include <iostream>
 
 #include "../events/include/Event.h"
+#include "Log.h"
 
 #define MAX_KEYS 1024
 #define MAX_BUTTONS 32
@@ -28,7 +28,9 @@ class Window
 {
 private:
     GLFWwindow* m_Window;
+
     Event m_Event;
+    Log m_Log;
 
     uint32_t m_WindowWidth;
     uint32_t m_WindowHeight;
