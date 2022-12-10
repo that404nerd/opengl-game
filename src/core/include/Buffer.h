@@ -1,12 +1,13 @@
 #pragma once
 
-#include <GL/glew.h>
+#include "../../gpch.h"
 
 class VertexBuffer
 {
 private:
     uint32_t m_RendererID;
 public:
+    VertexBuffer();
     VertexBuffer(const void* data, uint32_t size);
 
     void Bind();

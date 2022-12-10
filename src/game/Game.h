@@ -1,14 +1,6 @@
 #pragma once
 
-#include <GL/glew.h>
-
-#include <GLFW/glfw3.h>
-#include <cstdint>
-#include <string>
-#include <iostream>
-
-#include "../core/include/Window.h"
-#include "Character.h"
+#include "../gpch.h"
 
 //////////////////// Actual Game ///////////////////////
 
@@ -28,6 +20,9 @@ private:
     std::string m_Title;
     float m_Dt;
     float lastFrame;
+private:
+    Window m_Window;
+    Character m_Character;
 public:
     Game(uint32_t width, uint32_t height, std::string title);
 

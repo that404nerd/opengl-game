@@ -41,6 +41,12 @@ int Window::InitWindow(const WindowProps& windowProperties)
 void Window::MakeWindowContextCurrent()
 {
     glfwMakeContextCurrent(m_Window);
+    glfwSetWindowUserPointer(m_Window, this);
+
+    // these are only related to event stuff. No way they touch the other callbacks.
+    // Report if they do so!!!
+    m_Event.SetCallbacks(m_Window);
+
     if (glewInit() != GLEW_OK)
         std::cout << "glewInit error!" << std::endl;
 

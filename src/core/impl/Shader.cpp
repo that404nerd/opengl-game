@@ -86,6 +86,12 @@ void Shader::CreateShader(const char* vertexSource, const char* fragmentSource)
     glDetachShader(m_RendererID, fragmentShader);
 }
 
+// TODO: to be implemented later
+// void Shader::CreateShader(const char* vertexPath, const char* fragmentPath)
+// {
+
+// }
+
 void Shader::CheckCompileErrors(uint32_t shader, std::string type)
 {
     int success;

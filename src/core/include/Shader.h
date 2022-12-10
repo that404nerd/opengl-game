@@ -1,16 +1,6 @@
 #pragma once
 
-#include <GL/glew.h>
-#include <string>
-#include <unordered_map>
-#include <cstdint>
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <vector>
-
-#include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "../../gpch.h"
 
 class Shader
 {
@@ -18,10 +8,12 @@ private:
     uint32_t m_RendererID;
     std::unordered_map<std::string, int> m_UniformLocationCache;
 public:
-    explicit Shader();
+    Shader();
     ~Shader();
 
     void CreateShader(const char* vertexSource, const char* fragmentSource);
+    //void CreateShader(const char* vertexPath, const char* fragmentPath);
+
     void CheckCompileErrors(uint32_t shader, std::string type);
     uint32_t GetUniformLocation(const std::string& name);
 

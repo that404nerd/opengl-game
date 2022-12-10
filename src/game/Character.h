@@ -1,19 +1,18 @@
 #pragma once
 
-#include <GL/glew.h>
-#include <iostream>
-#include <memory>
-
-#include "../core/include/Shader.h"
+#include "../gpch.h"
 
 class Character
 {
 private:
     uint32_t m_RendererID;
-    Shader m_Shader;
+private:
+    Event m_Event;
 public:
     Character();
     void Init();
+
+    void MoveCharacter();
 
     void Render();
 

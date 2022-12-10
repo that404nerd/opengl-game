@@ -2,9 +2,6 @@
 
 ////////////////////////////// Actual Game Code //////////////////////////
 
-static Window m_Window;
-static Character m_Character;
-
 Game::Game(uint32_t width, uint32_t height, std::string title) 
 { 
     Init(width, height, title);
@@ -33,6 +30,10 @@ void Game::Update(float dt)
         float currentFrame = glfwGetTime();
         dt = currentFrame - lastFrame;
         lastFrame = currentFrame;
+
+        // Move the character (Runs with the while loop for now!)
+        // TODO: Change the character
+        m_Character.MoveCharacter();
 
         Render();
 

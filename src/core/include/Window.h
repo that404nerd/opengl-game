@@ -5,6 +5,11 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
+#include "../events/include/Event.h"
+
+#define MAX_KEYS 1024
+#define MAX_BUTTONS 32
+
 struct WindowProps
 {
     uint32_t WindowWidth;
@@ -23,6 +28,7 @@ class Window
 {
 private:
     GLFWwindow* m_Window;
+    Event m_Event;
 
     uint32_t m_WindowWidth;
     uint32_t m_WindowHeight;
@@ -33,8 +39,6 @@ private:
         uint32_t WindowHeight;
         const char* WindowTitle;
     } m_WindowData;
-
-
 public:
     int InitWindow(const WindowProps& props = WindowProps());
     Window(const uint32_t& windowWidth, const uint32_t& windowHeight, const char* windowTitle);

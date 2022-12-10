@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cstdint>
+#include "../../gpch.h"
 
 class Texture2D
 {

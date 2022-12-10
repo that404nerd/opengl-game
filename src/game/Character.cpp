@@ -1,5 +1,7 @@
 #include "Character.h"
-#include "../core/include/Buffer.h"
+
+static Shader m_Shader;
+static GameLog m_GameLog;
 
 Character::Character() {}
 
@@ -10,6 +12,7 @@ void Character::Init()
           0.5f, -0.5f, 0.0f,
           0.0f,  0.5f, 0.0f, 
     };
+
     glGenBuffers(1, &m_RendererID);
     glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertexPositions), vertexPositions, GL_STATIC_DRAW);
@@ -40,6 +43,14 @@ void Character::Init()
     )";
 
     m_Shader.CreateShader(vertexSource.c_str(), fragmentSource.c_str());
+}
+
+void Character::MoveCharacter()
+{
+    if(m_Event.GetKeyInput(GLFW_KEY_A))
+    {
+        m_GameLog.Info("Pressed A");    
+    }
 }
 
 void Character::Render()
